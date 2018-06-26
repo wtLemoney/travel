@@ -1,11 +1,11 @@
 <template>
     <div class="wrapper">
         <swiper :options="swiperOption">
-        <!-- slides -->
-        <swiper-slide v-for="item of swiperList" :key="item.id">
-            <img class="swiper-img" :src="item.imgUrl">
-        </swiper-slide>
-        <!-- Optional controls -->
+            <!-- slides -->
+            <swiper-slide v-for="item of swiperList" :key="item.id">
+                <img class="swiper-img" :src="item.imgUrl">
+            </swiper-slide>
+            <!-- Optional controls -->
         <div class="swiper-pagination"  slot="pagination"></div>
     </swiper>
     </div>
@@ -18,7 +18,7 @@ export default {
         return {
             swiperOption: {
                 pagination: '.swiper-pagination', // 轮播图片中下方的点
-                loop: true // 支持循环轮播
+                loop: true, // 支持循环轮播
             },
             swiperList: [{
                 id: '0001',
