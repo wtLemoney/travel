@@ -1,8 +1,8 @@
 <template>
     <div class="wrapper">
-        <swiper :options="swiperOption">
+        <swiper :options="swiperOption" v-if="showSwiper"><!--v-if解决每次刷新页面，显示的是数组的最后一张图片的问题，这是因为在数组还是空的时候页面就加载了-->
             <!-- slides -->
-            <swiper-slide v-for="item of swiperList" :key="item.id">
+            <swiper-slide v-for="item of list" :key="item.id">
                 <img class="swiper-img" :src="item.imgUrl">
             </swiper-slide>
             <!-- Optional controls -->
@@ -14,23 +14,21 @@
 <script>
 export default {
     name: 'HomeSwiper',
+    props: {
+        list: Array
+    },
     data () {
         return {
             swiperOption: {
                 pagination: '.swiper-pagination', // 轮播图片中下方的点
                 loop: true, // 支持循环轮播
-            },
-            swiperList: [{
-                id: '0001',
-                imgUrl: 'http://img1.qunarzz.com/piao/fusion/1805/13/6332699c44387902.jpg_750x200_b7afa4f8.jpg'
-            },{
-                id: '0002',
-                imgUrl: 'http://img1.qunarzz.com/piao/fusion/1806/fc/e47aa3e1c67bbc02.jpg_750x200_0f3eecf8.jpg'
-            }]
+            }
         }
     },
-    components: {
-
+    computed: {
+        showSwiper() {
+            return this.list.length;
+        }
     }
 }
 </script>
@@ -42,7 +40,7 @@ export default {
     overflow hidden
     width 100%
     height 0
-    padding-bottom 26.67% //防止抖动
+    padding-bottom 30% //防止抖动
     .swiper-img
         width 100%
  

@@ -10,7 +10,14 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/api': {// 我添加的，webpack server的转发机制，转到mock文件夹下
+        target: 'http://localhost:8080',
+        pathRewrite: {
+          '^/api': 'static/mock'
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
