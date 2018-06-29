@@ -6,7 +6,8 @@
         <div class="header-input"><span class="iconfont">&#xe632;</span>输入城市/景点/游玩主题</div>
         <router-link to="/city">
             <div class="header-right">
-                {{this.$store.state.city}}
+                <!--{{this.$store.state.city}}-->
+                {{this.city}}
                 <span class="iconfont arrow-icon">&#xe64a;</span>
             </div>
         </router-link>
@@ -14,6 +15,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default {
     // props: {
     //     city: String
@@ -23,8 +25,8 @@ export default {
 
         }
     },
-    components: {
-
+    computed: { // 这样this.$store.state.city可以写成this.city
+        ...mapState(['city'])
     }
 }
 </script>
@@ -54,7 +56,8 @@ export default {
         border-radius .1rem
         color #ccc
     .header-right
-        width 1.24rem
+        min-width 1.04rem
+        padding 0 .1rem
         float right
         text-align center
         color #fff

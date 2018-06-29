@@ -14,11 +14,13 @@ import HomeSwiper from './components/Swiper'
 import HomeIcons from './components/Icons'
 import HomeRecommend from './components/Recommend'
 import HomeWeekend from './components/Weekend'
+import {mapState} from 'vuex'
 
 import axios from 'axios'
 export default {
     data () {
         return {
+            lastCity: '',
             // city: '',
             swiperList: [],
             iconList: [],
@@ -33,9 +35,12 @@ export default {
         HomeRecommend,
         HomeWeekend
     },
+    computed: {
+        ...mapState(['city'])
+    },
     methods: {
         getHomeInfo() {
-            axios.get('/api/index.json').then(this.getHomeInfoSucc);
+            axios.get('/api/index.json?city='+this.city).then(this.getHomeInfoSucc);
         },
         getHomeInfoSucc(res) {
             res = res.data;
@@ -54,7 +59,14 @@ export default {
 
     },
     mounted() { // 页面挂在完成之后
+        this.lastCity = this.city;
         this.getHomeInfo();
+    },
+    activated() {//使用keep-alive多出来的钩子函数，解决页面城市改变时，重新发送ajax请求
+        if(this.lastCity !== this.city) {
+           this.lastCity = this.city;
+           this. getHomeInfo();
+        } 
     }
 }
 </script>
