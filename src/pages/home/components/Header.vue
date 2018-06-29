@@ -6,7 +6,7 @@
         <div class="header-input"><span class="iconfont">&#xe632;</span>输入城市/景点/游玩主题</div>
         <router-link to="/city">
             <div class="header-right">
-                {{this.city}}
+                {{this.$store.state.city}}
                 <span class="iconfont arrow-icon">&#xe64a;</span>
             </div>
         </router-link>
@@ -15,9 +15,9 @@
 
 <script>
 export default {
-    props: {
-        city: String
-    },
+    // props: {
+    //     city: String
+    // },
     data () {
         return {
 
