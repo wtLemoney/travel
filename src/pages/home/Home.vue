@@ -5,8 +5,14 @@
         <home-icons :list="iconList"></home-icons>
         <home-recommend :list="recommendList"></home-recommend>
         <home-weekend :list="weekendList"></home-weekend>
-    </div>
+    </div>  
 </template>
+
+
+
+
+
+
 
 <script>
 import HomeHeader from './components/Header'
