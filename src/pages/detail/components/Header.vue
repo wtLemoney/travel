@@ -41,7 +41,10 @@ export default {
         }
     },
     activated () {
-        window.addEventListener('scroll',this.handleScroll);
+        window.addEventListener('scroll',this.handleScroll);// 这个性能很不好
+    },
+    deactivated (){ //页面即将被隐藏，或显示别的页面的时候执行
+        window.removeEventListener('scroll',this.handleScroll); // 解绑全局事件
     }
 }
 </script>
