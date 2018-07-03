@@ -5,7 +5,7 @@
             <!-- <router-link to="/detail">  --> 
             <!-- rounter-link的位置本来写的是li标签，
             解决样式会把router-link渲染成a,从而字体变成蓝色的问题 -->
-                <router-link :to="'/detail'" tag="li" class="item border-bottom" v-for="item of list" :key="item.id">
+                <router-link :to="'/detail/'+item.id" tag="li" class="item border-bottom" v-for="item of list" :key="item.id">
                     <img class="item-img" :src="item.imgUrl" alt="">
                     <div class="item-info">
                         <p class="item-title">{{item.title}}</p>

@@ -17,8 +17,15 @@ export default new Router({
       component: City
     },
     {
-      path: '/detail', // 动态路由
+      path: '/detail/:id', // 动态路由 '/detail/:id'
+      name: 'detail',
       component: Detail
     }
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) { // 解决页面切换的时候始终回到页面最顶部
+    return {
+      x: 0,
+      y: 0
+    }
+  }
 })

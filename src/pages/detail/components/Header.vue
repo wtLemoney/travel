@@ -36,7 +36,7 @@ export default {
             }else {
                 this.showAbs = true;
             }
-            console.log(document.documentElement.scrollTop);// 不是window.
+            // console.log(document.documentElement.scrollTop);// 不是window.
             
         }
     },
